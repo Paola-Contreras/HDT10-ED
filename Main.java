@@ -25,15 +25,21 @@ import java.io.FileNotFoundException;
 
         // Try & Catch that reads the dictionary and save it on an array separate by , 
             try{
-                File info= new File("guategrafo.txt");
+                File Info= new File("guategrafo.txt");
+                Scanner readFile= new Scanner(Info);
+                while(readFile.hasNextLine()){
+                    String Lineas = readFile.nextLine();
+                    String[] Separa = Lineas.split(" ");   
+                    grafo.agregar(Separa[0], Separa[1], Separa[2]);
+                }  
             }catch(Exception e){
-                System.out.println("No se ha encontrado el archivo");
+               v.ErrorF();
             }
 
             // 
+            v.Welcome();
             while (salir==false){
                 grafo.Shorter_rute(); 
-                v.Welcome();
                 menusito= v.menu1();
                 if(menusito==1){
                     // Distancia entre ciudades 
@@ -42,9 +48,9 @@ import java.io.FileNotFoundException;
                     v.Arrive();
                     Cdestino=scan.nextLine();
                     if (grafo.existe(Csalida,Cdestino)){
-                        System.out.println("Las ciudades por las cuales se pasaron fueron: ");
+                        v.rute();
                         grafo.cerca(Csalida, Cdestino);
-                        System.out.println( "La distancia recorrida fue: " + grafo.recorrido(Csalida, Cdestino));
+                        System.out.println( "La distancia recorrida fue de: " + grafo.recorrido(Csalida, Cdestino));
                     }else{
                         v.Error();
                     }
@@ -65,6 +71,8 @@ import java.io.FileNotFoundException;
                             Cdestino=scan.nextLine();
                             if (grafo.existe(Csalida, Cdestino)){
                                 grafo.agregar(Csalida,Cdestino,"100");
+                                v.exito();
+                                System.out.println("Ciudades Modificadas: " +"\n-"+ Csalida + "\n-"+ Cdestino);
                             }else{
                                 v.Error();
                             }
@@ -77,12 +85,16 @@ import java.io.FileNotFoundException;
                             caminokm=scan.nextLine();
                             if (grafo.existe(Csalida, Cdestino)){
                                 grafo.agregar(Csalida,Cdestino,caminokm);
+                                v.exito();
+                                System.out.println("Ciudades Modificadas: " +"\n-"+ Csalida + "\n-"+ Cdestino );
+                                System.out.println("La nueva distancia entre ciudades es de: "+caminokm);
                             }else{
                                 v.Error();
                             }
 
                         }if (menusito2==3){
                             // Retornar menu inicial 
+                            v.back();
                             salir1 =true;
                         }
                     }

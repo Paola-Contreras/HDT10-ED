@@ -12,7 +12,7 @@ public class Vista {
         int op = 4;
         String ops = "";
         boolean validar = true;
-        System.out.println("----MENU----\n");
+        System.out.println("\n----MENU----\n");
             System.out.println("1.Buscar ruta más corta entre dos ciudades");
             System.out.println("2.Mostrar el centro del grafo");
             System.out.println("3.Modificar grafo");
@@ -32,7 +32,7 @@ public class Vista {
         int op = 3;
         String ops = "";
         boolean validar = true;
-        System.out.println("----MODIFICAR GRAFO----\n");
+        System.out.println("\n----MODIFICAR GRAFO----\n");
             System.out.println("1.Interrupción de trafico");
             System.out.println("2.Conección entre ciudades");
             System.out.println("3.Salir\n");
@@ -53,31 +53,47 @@ public class Vista {
         try {
             numInt = Integer.parseInt(rawNumero);
         }catch (NumberFormatException e){
-           System.out.println( "\nIngrese un numero valido porfa." );
+           System.out.println( "\n*** Ingrese un numero valido porfa ***" );
         }
         return numInt;
       }
 
+
+// ----------------------------------------- MESSAGE AREA ----------------------------------------------
     public void Welcome(){
         System.out.println("\nBienvenido al sistema Floyd");
     }
 
       public void despedida(){
-        System.out.println("Se ha cerrado el programa, que tenga feliz viaje :)");
+        System.out.println("Se ha cerrado el programa");
     }
     public void Departure(){
         System.out.println("Ingrese el nombre de la ciudad de salida");
     }
     public void Arrive(){
-        System.out.println("Ingrese el nombre de la ciudad de destino");
+        System.out.println("\nIngrese el nombre de la ciudad de destino");
     }
     public void distance(){
-        System.out.println("Ingrese la distancia entre las ciudades en km");
+        System.out.println("\nIngrese la distancia entre las ciudades en km");
     }
-    public void Error(){
-        System.out.println("Ha ocurrido un error intentelo nuevamente");
-    }
+   
     public void Cg(){
         System.out.println("Mostrando informacion del grafo.....");
+    } 
+    public void Error(){
+        System.out.println("\n*** Ha ocurrido un error intentelo nuevamente ***\n");
+    }
+    public void ErrorF(){
+        System.out.println("No se ha encontrado el archivo");
+    }
+    public void exito(){
+        System.out.println("\n** El grafo se ha modificado con exito ** ");
+        System.out.println("\nLos datos modificados fueron los siguientes: ");
+    }
+    public void rute(){
+        System.out.println("Las ciudades por las cuales se pasaron fueron: ");
+    }
+    public void back(){
+        System.out.println("Regresando a menu principal.... ");
     }
 }
