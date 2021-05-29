@@ -94,18 +94,17 @@ public class Floyd {
         System.out.println("El centro del grafo es: " + ub2);
     }
 
- 
-    public int recorrido(String s, String a){
-        int recorrio= distancia[Ubicacion.indexOf(s)][Ubicacion.indexOf(a)];
-        return recorrio;
-    }
 
     public void cerca(String s, String a){
         int u1= Ubicacion.indexOf(s);
         int u2= Ubicacion.indexOf(a);
         print(u1, u2);
     }
-
+    
+    public int recorrido(String s, String a){
+        int recorrio= distancia[Ubicacion.indexOf(s)][Ubicacion.indexOf(a)];
+        return recorrio;
+    }
 
     private void print (int k, int m){
         Vector<String> camino = new Vector<String>();
