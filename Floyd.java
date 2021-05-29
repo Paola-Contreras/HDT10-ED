@@ -2,6 +2,12 @@
     Estructura de datos 
     Gabriela Paola Contreras Guerra
     Carné: 20213*/
+    /* Para la realizacion del codigo se utilizaron estas fuentes como referencias para resolver algunos problemas:
+    - https://programmerclick.com/article/4986390995/
+    - http://lineadecodigo.com/java/crear-una-matriz-en-java/
+    - http://lineadecodigo.com/java/comparar-matrices-en-java/
+    - https://www.w3schools.com/java/java_break.asp
+    */
 
 // Imports 
 import java.util.*;
