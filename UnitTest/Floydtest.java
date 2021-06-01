@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 class Floydtest {
 	@Test
 	void test() {
-		Floyd gg= new Floyd()
+		Floyd gg= new Floyd();
 		gg.add("City1","City2","1");
 		gg.add("City2","City4","2");
 		gg.add("City4","City6","3");
@@ -14,17 +14,18 @@ class Floydtest {
 	}
 	
 	void agregartest() {
-	gg.agregar("City1","City2");
-	assertEquals(0,gg.recorrido("City1","City2"));
+		gg.agregar("City1","City2");
+		assertEquals(0,gg.recorrido("City1","City2"));
 	}
 	
 	void existetest() {
 		gg.existe("City1","City3");
+		
 		return true 
 	}
 	
 	void shorter_rutetest() {
-		gg.shorter_rute()
+		gg.shorter_rute();
 		assertEquals(3,gg.recorrido("City2","City4"));	
 	}
 	
