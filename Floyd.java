@@ -17,6 +17,7 @@ public class Floyd {
     
     // Atributs 
     private Vector<String> Ubicacion;
+    private Vector<String> camino;
     private int[][] distancia;
     private int[][] ruta;
     
@@ -26,10 +27,11 @@ public class Floyd {
     public Floyd(){
         // Instances 
         Ubicacion= new  Vector<String>();
+        camino = new Vector<String>();// vector to save the path used 
         distancia= new int [35][35];
         ruta= new int [35][35];
         
-        //Loop that fills the matrix with infinites
+        //Loop that gives  the matrix a size and fills them  with infinites
         for (int i =0; i<35; i++){
             for (int j =0; j<35; j++){
                 ruta [i][j]=100;
@@ -110,17 +112,22 @@ public class Floyd {
      */
     public void center(){
         int max=0;
+        int j ;
+        int min=0;
         Vector<Integer> centro = new  Vector<Integer>(); // vector to save the data of the center 
         
-        for (int i =0; i<Ubicacion.size();i++){
-            for (int j =0; j<Ubicacion.size();j++){
+        for(int i =0;i<Ubicacion.size();i++){
+			for(max=distancia[i][0], j =0; j< Ubicacion.size(); j++){
                 // verify if the matrix is greater than 0 
-                if( distancia[i][j]>0){
-                    max = distancia[i][j]; // assing the greater number in the variable 
-                }
-            }
-        centro.add(max); // add to the matrix the greater number 
-        }
+				if(distancia[i][j]>max)
+					max = distancia[i][j]; // assing the greater number in the variable 
+			}
+			if(i==0||max>min){
+				min = max;
+			}
+            centro.add(max); // add to the matrix the greater number 
+		}
+       
         int o = Collections.min(centro); // gets the minimum number in the vector 
         int ub= centro.indexOf(o); // gets the index of the minimum number
         String ub2= Ubicacion.get(ub); // gets the name of the city 
@@ -139,6 +146,7 @@ public class Floyd {
         int u2= Ubicacion.indexOf(a); // gets the index of the second city entered by the user
         //Shows the cities 
         print(u1, u2);
+        printt(u1,u2);
     }
 
     /**
@@ -152,6 +160,19 @@ public class Floyd {
         int recorrio= distancia[Ubicacion.indexOf(s)][Ubicacion.indexOf(a)];
         return recorrio;
     }
+    /**
+     * Method to print certain data of  matrix 
+     * @param k city one 
+     * @param m city two
+     */
+    public void printt(int k, int m){
+        int tamano = camino.size(); // int that saves the size of the vector 
+        // cycle that prints the vector information as long as it is less than the amount of data that is stored
+        for(int i = 0; i < tamano - 1; i++)
+        // prints the data of the vector 
+        System.out.print(camino.get(i) + " \n - ");
+        System.out.print(camino.get(tamano - 1) + "\n");
+    }
 
     /**
      * Method to print certain data of  matrix 
@@ -159,7 +180,7 @@ public class Floyd {
      * @param m
      */
     public void print (int k, int m){
-        Vector<String> camino = new Vector<String>();// vector to save the path used 
+       
         camino.add("\n--"+Ubicacion.get(k)); // add to the vector the first city 
         //conditional that checks if it is possible to travel from one city to anotherone 
         if (distancia[k][m] == 100 || distancia[k][m] == 0){
@@ -172,11 +193,5 @@ public class Floyd {
                 camino.add(Ubicacion.get(k));
             }
         }
-        int tamano = camino.size(); // int that saves the size of the vector 
-        // cycle that prints the vector information as long as it is less than the amount of data that is stored
-        for(int i = 0; i < tamano - 1; i++)
-        // prints the data of the vector 
-        System.out.print(camino.get(i) + " \n - ");
-        System.out.print(camino.get(tamano - 1) + "\n");
     }
 }
